@@ -1,9 +1,9 @@
 ---
 templateKey: index-page
 title: 'Peter Macinkovic '
-image: /img/home-jumbotron.jpg
+image: /img/melbourne-skyline.jpg
 heading: 'eCommerce SEO Specialist and Digital Marketer from Melbourne, Australia'
-subheading: Support sustainable farming while enjoying a cup
+subheading: 'eCommerce SEO Specialist from Melbourne, Australia'
 mainpitch:
   title: Why Kaldi
   description: >
