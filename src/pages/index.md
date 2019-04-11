@@ -1,8 +1,8 @@
 ---
 templateKey: index-page
-title: Great coffee with a conscience
+title: 'Peter Macinkovic '
 image: /img/home-jumbotron.jpg
-heading: Great coffee with a conscience
+heading: 'eCommerce SEO Specialist and Digital Marketer from Melbourne, Australia'
 subheading: Support sustainable farming while enjoying a cup
 mainpitch:
   title: Why Kaldi
@@ -68,3 +68,4 @@ main:
     alt: Coffee beans
     image: /img/products-grid1.jpg
 ---
+
