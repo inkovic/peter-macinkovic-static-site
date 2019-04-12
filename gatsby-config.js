@@ -2,9 +2,9 @@ var proxy = require("http-proxy-middleware")
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter',
+    title: 'Peter Macinkovic | eCommerce SEO Specialist |Digital Marketing',
     description:
-      'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
+      'eCommerce SEO, Digital Marketing and thoughts on the web by Melbourne Digital Marketer Peter Macinkovic. Built with love in Gatsby.',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -22,6 +22,12 @@ module.exports = {
       options: {
         path: `${__dirname}/src/pages`,
         name: 'pages',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://peter.macinkovic.id.au`,
       },
     },
     {
@@ -71,7 +77,7 @@ module.exports = {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
-        purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
+        purgeOnly: ['/all.scss'], // applies purging only on the bulma css file
       },
     }, // must be after other CSS plugins
     'gatsby-plugin-netlify', // make sure to keep it last in the array

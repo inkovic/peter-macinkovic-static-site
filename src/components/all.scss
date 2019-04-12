@@ -1,0 +1,154 @@
+@import "~bulma/sass/utilities/initial-variables";
+
+// Config vars
+// Kaldi logo brand color: #FD461E
+
+//Colour Scheme B
+$main-purple: #44318D;
+$secondary-deep-purple: #2A1B3D;
+$tertiary-deep-pink: #D83F87;
+$primary: $main-purple;
+$primary-accent-left: $secondary-deep-purple;
+$tertiary: $tertiary-deep-pink;
+$secondary: #8265a7;
+$secondary-invert: #A4B3B6;
+
+$body-color: #222;
+$black: #2b2523;
+
+@import "~bulma";
+.content .taglist {
+  list-style: none;
+  margin: 1.5rem 1.5rem 0 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: left;
+  justify-content: left;
+  -webkit-align-items: center;
+  align-items: center;
+  li {
+    padding: 0 2rem 1rem 0;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+  }
+}
+
+.full-width-image-container {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin: 2em -50vw;
+}
+
+.full-width-image, .full-width-image-container {
+  width: 100vw;
+  height: 400px;
+  background-size: cover;
+  background-position: bottom;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 16px 10px;
+  font-size: 18px;
+  font-size: 1rem;
+  line-height: 1.25;
+  background-color: #fff;
+  border-radius: .25rem;
+  text-decoration: none;
+  font-weight: 700;
+  color: #cc3700;
+  text-align: center;
+  box-shadow: inset 0 0 0 2px #f40;
+  transition: all .15s ease;
+}
+
+.margin-top-0 {
+  margin-top: 0 !important;
+}
+
+.navbar-item .icon {
+  color: #d64000;
+}
+
+.icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: currentColor;
+}
+
+nav.navbar {
+  background: $primary;
+  .navbar-item{
+    color: white;
+    &:hover{
+      background: transparent;
+    }
+  }
+  .navbar-brand {
+    .navbar-item {
+      padding: 0.5 1rem;
+      img {
+        border-radius: 50%;
+        border: solid 2px #f9f9f9;
+        background: white;
+        max-height: 2.5rem;
+      }
+    } 
+  }
+  .navbar-start{
+    .navbar-item{
+      &:hover{
+        background: $secondary;
+      }
+    }
+  }
+  .navbar-end{
+    background: transparent;
+    .navbar-item{
+      &:hover{
+        background: $secondary;
+      }
+    }
+  }
+  
+}
+
+
+
+footer.footer {
+  padding: 3rem 0 0;
+  background-color: $primary;
+  color: #e5e5e5;
+}
+
+.menu-list {
+  list-style: none !important;
+  text-align: left;
+  a {
+    color: #e5e5e5;
+  }
+}
+
+.social {
+  padding: 2em;
+  a {
+    padding: .5em .5em .3em;
+    border-radius: 1em;
+    background-color: #f5f5f5;
+    margin: .5em;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    display: inline;
+  }
+}
+
