@@ -11,28 +11,33 @@ class BlogRoll extends React.Component {
       <div className="columns is-multiline">
         {posts &&
           posts.map(({ node: post }) => (
-            <div className="is-parent column is-6" key={post.id}>
-              <article className="tile is-child box notification">
-                <p>
-                  <Link
-                    className="title has-text-primary is-size-4"
-                    to={post.fields.slug}
-                  >
-                    {post.frontmatter.title}
-                  </Link>
-                  <span> &bull; </span>
-                  <span className="subtitle is-size-5 is-block">
-                    {post.frontmatter.date}
-                  </span>
-                </p>
-                <p>
-                  {post.excerpt}
-                  <br />
-                  <br />
-                  <Link className="button" to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
-                </p>
+            <div className="column is-12" key={post.id}>
+              <article className="tile is-parent box notification">
+                <div className="column is-6">
+                  <img src="https://placekitten.com/800/600" />
+                </div>   
+                <div className="column is-6">
+                  <p>
+                    <Link
+                      className="title has-text-primary is-size-4"
+                      to={post.fields.slug}
+                    >
+                      {post.frontmatter.title}
+                    </Link>
+                    <span> &bull; </span>
+                    <span className="subtitle is-size-5 is-block">
+                      {post.frontmatter.date}
+                    </span>
+                  </p>
+                  <p>
+                    {post.excerpt}
+                    <br />
+                    <br />
+                    <Link className="button" to={post.fields.slug}>
+                      Keep Reading → 
+                    </Link>
+                  </p>
+                </div>
               </article>
             </div>
           ))}
@@ -59,7 +64,7 @@ export default () => (
         ) {
           edges {
             node {
-              excerpt(pruneLength: 400)
+              excerpt(pruneLength: 600)
               id
               fields {
                 slug
