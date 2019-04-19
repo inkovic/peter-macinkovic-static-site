@@ -6,42 +6,65 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import peterAvatar from '../../static/img/peter-macinkovic.jpg'
+
+//import melbSkyline from '../../static/img/melbourne-skyline-flinders.jpg'
+
 export const BlogPostTemplate = ({
   content,
   contentComponent,
   description,
   image,
+  readingtime,
+  wordcount,
+  slug,
+  date,
   tags,
   title,
+  frontmatter,
   helmet,
 }) => {
   const PostContent = contentComponent || Content
 
   return (
-    <section className="section">
+    <main>
       {helmet || ''}
+      <div
+      className="full-width-image margin-top-0"
+      style={{
+        backgroundImage: `url(${
+          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
+        })`,
+        backgroundPosition: `top left`,
+        backgroundAttachment: `fixed`,
+      }}
+    >
+      <div 
+       className="blog-title-wrap columns"
+        style={{
+          display: 'flex',
+          height: '150px',
+          lineHeight: '1',
+          justifyContent: 'space-around',
+          alignItems: 'left',
+          flexDirection: 'column',
+        }}
+      >
+        <h1
+          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
+        >
+          {title}
+        </h1>
+        <div className="has-text-centered;">
+        <span id="publish-date"><span aria-labelledby="publish-date" role="img">📅</span> Published on {date}</span> by Peter Macinkovic   <span id="reading-time"><span aria-labelledby="reading-time" role="img">🕑</span> {readingtime}</span>  <span id="wordcount"><span aria-labelledby="worcount" role="img">🖹</span> {wordcount} words</span> 
+        </div>
+      </div>
+    </div>
+
       <div className="container content article">
         <div className="columns is-parent tile">
-          <main className="column is-8 is-child">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <img src={image} />
-
+          <article className="article-body column is-8 is-child">
             <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </main>
+          </article>
           <aside className="column is-4 is-child">
               <div className="author-card--sidebar columns box">
                       <div className="author-card-image column is-4 is-4-mobile">
@@ -53,20 +76,33 @@ export const BlogPostTemplate = ({
                        <p>He lives his beautiful wife, Aki, and knows more about the internals of Shopify then any human should.</p>
                        <p>Flash apologist. SEO Zealot.</p>
                      </div>
-              </div>        
+              </div> 
+              {tags && tags.length ? (
+                <div className="box" style={{ marginTop: `4rem` }}>
+                  <h4>Categories</h4>
+                  <ul className="taglist">
+                    {tags.map(tag => (
+                      <li key={tag + `tag`}>
+                        <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}       
           </aside>
         </div>
       </div>
-    </section>
+    </main>
   )
 }
 
 BlogPostTemplate.propTypes = {
-  hero: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
+  frontmatter: PropTypes.object,
   title: PropTypes.string,
+  date: PropTypes.string,
   helmet: PropTypes.object,
 }
 
@@ -78,7 +114,7 @@ const BlogPost = ({ data }) => {
       <BlogPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
-        image={post.frontmatter.image}
+        date={post.frontmatter.date}
         description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
@@ -87,10 +123,29 @@ const BlogPost = ({ data }) => {
               name="description"
               content={`${post.frontmatter.description}`}
             />
+            <meta
+              name="og:title"
+              content={`${post.frontmatter.title}`}
+            />
+            <meta
+              name="og:description"
+              content={`${post.frontmatter.description}`}
+            />
+            <meta 
+              property="og:image"
+              content={`${
+                !!post.frontmatter.image.childImageSharp ? post.frontmatter.image.childImageSharp.fluid.src : post.frontmatter.image
+              }}`}
+              />
           </Helmet>
         }
+        frontmatter={post.frontmatter}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        image={post.frontmatter.image}
+        wordcount={post.fields.readingTime.words}
+        slug={post.fields.slug}
+        readingtime={post.fields.readingTime.text}
       />
     </Layout>
   )
@@ -109,11 +164,18 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      fields {
+        slug
+        readingTime {
+          text
+          words
+        }
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         image {
           childImageSharp {
-            fluid(maxWidth: 2048, quality: 75) {
+            fluid(maxWidth: 1280, quality: 75) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }

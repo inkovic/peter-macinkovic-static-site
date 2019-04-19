@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 class BlogRoll extends React.Component {
   render() {
@@ -14,8 +15,9 @@ class BlogRoll extends React.Component {
             <div className="column is-12" key={post.id}>
               <article className="tile is-parent box notification">
                 <div className="column is-6">
-                  <img src="https://placekitten.com/800/600" />
-                </div>   
+                  <PreviewCompatibleImage imageInfo={post.frontmatter} />
+
+                </div>
                 <div className="column is-6">
                   <p>
                     <Link
@@ -26,7 +28,7 @@ class BlogRoll extends React.Component {
                     </Link>
                     <span> &bull; </span>
                     <span className="subtitle is-size-5 is-block">
-                      {post.frontmatter.date}
+                      {post.frontmatter.date} {post.fields.readingTime.text} {post.fields.readingTime.words} 
                     </span>
                   </p>
                   <p>
@@ -34,7 +36,7 @@ class BlogRoll extends React.Component {
                     <br />
                     <br />
                     <Link className="button" to={post.fields.slug}>
-                      Keep Reading → 
+                      Keep Reading →  
                     </Link>
                   </p>
                 </div>
@@ -64,15 +66,27 @@ export default () => (
         ) {
           edges {
             node {
-              excerpt(pruneLength: 600)
+              excerpt(pruneLength: 260)
               id
               fields {
                 slug
+                readingTime {
+                  text
+                  words
+                }
               }
               frontmatter {
                 title
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 2048, quality: 75) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
+
               }
             }
           }

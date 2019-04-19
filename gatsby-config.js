@@ -2,13 +2,16 @@ var proxy = require("http-proxy-middleware")
 
 module.exports = {
   siteMetadata: {
-    title: 'Peter Macinkovic | eCommerce SEO Specialist |Digital Marketing',
+    siteUrl: `https://peter.macinkovic.id.au/`,
+    title: 'Peter Macinkovic | eCommerce SEO Specialist | Digital Marketing',
     description:
       'eCommerce SEO, Digital Marketing and thoughts on the web by Melbourne Digital Marketer Peter Macinkovic. Built with love in Gatsby.',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
+    `gatsby-plugin-sitemap`,
+    'gatsby-plugin-robots-txt',
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
@@ -43,6 +46,8 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          `gatsby-remark-reading-time`,
+          `gatsby-remark-autolink-headers`,
           {
             resolve: 'gatsby-remark-relative-images',
             options: {

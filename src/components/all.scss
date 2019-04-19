@@ -95,6 +95,16 @@ nav.navbar {
       background: transparent;
     }
   }
+
+  body code{
+  background-color: $secondary;
+  color: white;
+  font-size: 0.875em;
+  font-weight: normal;
+  padding: 0.25em 0.5em 0.25em;
+  }
+
+  
   .navbar-burger {
     color: $tertiary;
   }
@@ -142,13 +152,18 @@ nav.navbar {
   }
 
 }
-.article
-{
-
+.blog-title-wrap{
+  background: $primary;
+  color: white;
+  line-height: 1.4;
+  padding: 0.25rem;
+  margin: 0;
+}
+.article {
+margin-top: 1rem;
   aside{
 
     .author-card--sidebar{
-      margin-top: 1rem;
       .author-card-image {
         img{
         border-radius: 50%;
@@ -191,3 +206,9 @@ footer.footer {
   }
 }
 
+blockquote{
+  background: $secondary;
+  padding: 1rem;
+  color: white;
+  border-left: solid 5px $primary;
+}
