@@ -199,8 +199,6 @@ footer.footer {
     border-radius: 1em;
     background-color: #f5f5f5;
     margin: .5em;
-    width: 1em;
-    height: 1em;
     vertical-align: middle;
     display: inline;
   }
@@ -212,3 +210,11 @@ blockquote{
   color: white;
   border-left: solid 5px $primary;
 }
+
+.blogroll-title {
+  text-decoration: none!important;
+  color: $primary!important;
+  line-height: 1.15;
+  font-size: 22px!important;
+}
+

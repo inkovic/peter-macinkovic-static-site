@@ -13,6 +13,13 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     'gatsby-plugin-robots-txt',
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // replace "UA-XXXXXXXXX-X" with your own Tracking ID
+        trackingId: "UA-138697142-1",
+      },
+    },
+    {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
       options: {

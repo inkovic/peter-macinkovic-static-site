@@ -6,7 +6,6 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import peterAvatar from '../../static/img/peter-macinkovic.jpg'
-
 //import melbSkyline from '../../static/img/melbourne-skyline-flinders.jpg'
 
 export const BlogPostTemplate = ({
@@ -83,7 +82,8 @@ export const BlogPostTemplate = ({
                   <ul className="taglist">
                     {tags.map(tag => (
                       <li key={tag + `tag`}>
-                        <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                        <Link 
+                        to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
                       </li>
                     ))}
                   </ul>
@@ -106,6 +106,7 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object,
 }
 
+
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
 
@@ -116,6 +117,13 @@ const BlogPost = ({ data }) => {
         contentComponent={HTMLContent}
         date={post.frontmatter.date}
         description={post.frontmatter.description}
+        frontmatter={post.frontmatter}
+        tags={post.frontmatter.tags}
+        title={post.frontmatter.title}
+        image={post.frontmatter.image}
+        wordcount={post.fields.readingTime.words}
+        slug={post.fields.slug}
+        readingtime={post.fields.readingTime.text}
         helmet={
           <Helmet titleTemplate="%s | Blog">
             <title>{`${post.frontmatter.title}`}</title>
@@ -137,15 +145,78 @@ const BlogPost = ({ data }) => {
                 !!post.frontmatter.image.childImageSharp ? post.frontmatter.image.childImageSharp.fluid.src : post.frontmatter.image
               }}`}
               />
+              <script type="application/ld+json">{JSON.stringify(
+                {
+                  "@context": "http://schema.org",
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [{
+                    "@type": "ListItem",
+                    "position": 1,
+                      "item": {
+                        "@type": "ListItem",
+                          "@id":  `https://peter.macinkovic.id.au`,
+                          "name": "👨 Peter Macinkovic"
+                        }
+                    },{
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item": {
+                      "@id": `https://peter.macinkovic.id.au/blog`,
+                      "name": "📚Blog"
+                    }
+                  },{
+                    "@type": "ListItem",
+                    "position": 3,
+                      "item": {
+                      "@id": `https://peter.macinkovic.id.au${post.fields.slug}`,
+                      "name": `${post.frontmatter.emoji} ${post.frontmatter.title}`,
+                      }
+                    }]
+                  }
+              )}
+              </script>
+              <script type="application/ld+json">{JSON.stringify(
+                {
+                  '@context': 'https://schema.org',
+                  '@type': `BlogPosting`,
+                  'headline': `${post.frontmatter.title}`,
+                  "mainEntityOfPage": `https://peter.macinkovic.id.au${post.fields.slug}`,
+                  "alternativeHeadline": `${post.frontmatter.title}`,
+                  "image": { 
+                    "@type": "imageObject", 
+                    "url": `https://peter.macinkovic.id.au${
+                      !!post.frontmatter.image.childImageSharp ? post.frontmatter.image.childImageSharp.fluid.src : post.frontmatter.image
+                    }`,
+                    "height": "640px",
+                    "width": "1280px"
+                    },
+                    "author": "Peter Macinkovic",
+                    "genre": "SEO and Technical Marketing",
+                    "wordcount": `${post.fields.readingTime.words}`,
+                    "publisher": {
+                      "@type": "Organization",
+                      "name": "Peter Macinkovic",
+                      "logo": {
+                       "@type": "imageObject",
+                       "url": `https://peter.macinkovic.id.au/img/peter-macinkovic.jpg`,
+                       "height": "400px",
+                       "width": "440px"
+                      },
+                      "mainEntityOfPage": "https://peter.macinkovic.id.au",
+                      "sameAs": ["https://au.linkedin.com/in/inkovic", "https://www.facebook.com/inkovic/", "https://www.twitter.com/inkovic/", "https://www.instagram.com/inkovic/"],
+                      "url": "https://peter.macinkovic.id.au"
+                    },
+                "url": `https://peter.macinkovic.id.au${post.fields.slug}`,
+                "datePublished": `${ post.frontmatter.date }`,
+                "dateModified": `${ post.frontmatter.date }`,
+                "description": `${ post.frontmatter.description}`,
+                "articleBody": `${post.html.replace(/(<([^>]+)>)/ig,"")}`
+                }
+              )}
+            </script>
           </Helmet>
         }
-        frontmatter={post.frontmatter}
-        tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
-        image={post.frontmatter.image}
-        wordcount={post.fields.readingTime.words}
-        slug={post.fields.slug}
-        readingtime={post.fields.readingTime.text}
+        
       />
     </Layout>
   )
@@ -174,12 +245,14 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         image {
+          publicURL
           childImageSharp {
             fluid(maxWidth: 1280, quality: 75) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
+        emoji
         title
         description
         tags

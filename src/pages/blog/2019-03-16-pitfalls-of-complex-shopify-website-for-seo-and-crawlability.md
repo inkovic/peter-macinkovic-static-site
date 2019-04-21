@@ -3,8 +3,8 @@ templateKey: 'blog-post'
 title: 'Pitfalls of a Complex Shopify Website for SEO and Crawlability'
 image: /img/blog/sitebulb-hero.png
 date: 2019-03-16T15:04:10.000Z
-description: >-
-  Doing SEO in Shopify is like doing SEO in hard mode. A hosted CMS prevents customisation when need be. Optimising crawl for a complex Shopify website with a hierarchical information structure proves to be challenging.
+emoji: 📈
+description: Doing SEO in Shopify is like doing SEO in hard mode. A hosted CMS prevents customisation when need be. Optimising crawl for a complex Shopify website with a hierarchical information structure proves to be challenging.
 tags:
   - SEO
   - Crawl Optimisation
@@ -159,4 +159,20 @@ To make due, you have to use the bulk edit capabilities within Shopify, which ar
 
 ###How to Add Custom Sitemaps in Shopify using to 301 Redirect Trick
 
-With the one-to-one 
+With the one-to-one mapping involved with _hiding_ object from sitemaps not exactly the most scalable method, how does Shopify handle adding new content to sitemaps on scale?
+
+Unfortunately, **there is no native method** of adding pages in the sitemap that do not exist as part of the predefined allowed objects. No tag pages. No search pages. No special `?view=` exceptions.
+
+Additionally, Shopify do not allow you to control the HTTP Heads of a page directly on the theme level - so whilst you can create your own custom `sitemap` page using the `?view=` template, the header will still respond as HTML and will not validate on submission.
+
+![How to create a XML Sitemap in Shopify](/img/blog/shopify-create-xml-sitemap.png)
+
+Fortunately, Google Search Console has a variety of techniques that allow for the submission of sitemaps without access to the front-end of the website. One technique is using a **301 Redirect trick** in Google Search Console from a non-existant file to a valid sitemap hosted externally.
+
+This is harder than it should be in Shopify - it is _very_ tough to find a 404 page within the Shopify, as with things like invalid paths may return 200 if they blong to a valid parent (i.e. `collection/broken-url-that-returns-200-response`).
+
+The easiest way to generate a 404 and keep some kind of predictable URL structure is to redirect an _inavlid_ file (i.e. `.xml`) 
+
+![Kiana Beauty Sitemaps](/img/blog/kiana-beauty-sitemaps.gif)
+
+xx

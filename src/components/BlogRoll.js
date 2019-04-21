@@ -7,7 +7,6 @@ class BlogRoll extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
-
     return (
       <div className="columns is-multiline">
         {posts &&
@@ -21,14 +20,13 @@ class BlogRoll extends React.Component {
                 <div className="column is-6">
                   <p>
                     <Link
-                      className="title has-text-primary is-size-4"
+                      className="blogroll-title is-size-4"
                       to={post.fields.slug}
                     >
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <span className="subtitle is-size-5 is-block">
-                      {post.frontmatter.date} {post.fields.readingTime.text} {post.fields.readingTime.words} 
+                      {post.frontmatter.title}</Link>
+                    <span 
+                    className="blogroll-subtitle is-block">
+                      <span id={`publish-date-${post.id}`}><span aria-labelledby={`publish-date-${post.id}`} role="img">📅</span> Published on {post.frontmatter.date}</span> by Peter Macinkovic   <br/><span id={`reading-time-${post.id}`}><span aria-labelledby={`reading-time-${post.id}`} role="img">🕑</span> {post.fields.readingTime.text}</span>  <span id={`wordcount-${post.id}`}><span aria-labelledby={`wordcount-${post.id}`} role="img">🖹</span> {post.fields.readingTime.words} words</span>
                     </span>
                   </p>
                   <p>
