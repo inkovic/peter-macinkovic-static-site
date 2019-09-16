@@ -1,47 +1,32 @@
 ---
 templateKey: index-page
-title: 'Hi, I''m Peter Macinkovic '
-image: /img/melbourne-skyline.jpg
+title: "Hi, I'm Peter Macinkovic "
+image: /img/peter-presents-melb-seo.jpg
 heading: Who is Peter Macinkovic?
-subheading: 'eCommerce SEO Specialist from Melbourne, Australia'
+subheading: "Technical SEO Specialist from Melbourne, Australia"
 mainpitch:
   title: Working on the web and loving it!
   description: >-
     I am a Digital Marketing guy based in Melbourne that discovered my true
-    calling in SEO and eCommerce.
+    calling in Technical SEO and eCommerce.
 description: >-
-  I spend my time implementing marketing and technology strategies for Online
-  Retail in the Beauty sector – helping Kiana Beauty Melbourne grow into
-  uncharted waters.
+  I spend my time implementing technical search strategies for Innovate Online
+  - help our clients avoid pitfalls as their organic reach grows. Lots of custom information architecture design within the limitations of web platforms, especially Shopify, maximising organic reach via SEO strategy, Crawl Optimisation as well as some fun working in Excel for migrations.
 intro:
   blurbs:
-    - image: /img/coffee.png
+    - image: /img/screaming-frog.png
       text: >
-        We sell green and roasted coffee beans that are sourced directly from
-        independent farmers and farm cooperatives. We’re proud to offer a
-        variety of coffee beans grown with great care for the environment and
-        local communities. Check our post or contact us directly for current
-        availability.
-    - image: /img/coffee-gear.png
+        The start of any SEO project begins with the audit and the firestarter of any good audit will be the crawl analysis. Tools like Screaming Frog and Sitebulb makes SEOs lives easier by crawling through a website, identifying 'spider traps', technical problems and issues on scale. From there, you can make a plan to perform fixes on a one-to-one basis and on scale to improve indexability, crawlability and SERP performance.
+    - image: /img/shopify.png
       text: >
-        We offer a small, but carefully curated selection of brewing gear and
-        tools for every taste and experience level. No matter if you roast your
-        own beans or just bought your first french press, you’ll find a gadget
-        to fall in love with in our shop.
-    - image: /img/tutorials.png
+        Shopify has exploded in popularity in the past four years as a user friendly, frictionless ecommerce experience.
+        As a hosted platform, it comes with strict limitations that provide a challenge in implementing complex Information Architecture and best practice SEO. Working within these constraints and pushing the liquid templating language to its limits can make the most out of a Shopify store to sell online.
+    - image: /img/google-analytics.png
       text: >
-        Love a great cup of coffee, but never knew how to make one? Bought a
-        fancy new Chemex but have no clue how to use it? Don't worry, we’re here
-        to help. You can schedule a custom 1-on-1 consultation with our baristas
-        to learn anything you want to know about coffee roasting and brewing.
-        Email us or call the store for details.
-    - image: /img/meeting-space.png
+        You can only control what you measure. Google Analytics is an enterprise level analytics tool available for everyone and is critical for understanding how your web application performs. Creating filtered views, segments, reports, integrating with Google Ads and Search Console data to gain insights on your paid amplication and organic campaigns. Others tools like Yandex.Metrica and VWO complete the toolset, gaining heat map and session recording insights.
+    - image: /img/meetup.png
       text: >
-        We believe that good coffee has the power to bring people together.
-        That’s why we decided to turn a corner of our shop into a cozy meeting
-        space where you can hang out with fellow coffee lovers and learn about
-        coffee making techniques. All of the artwork on display there is for
-        sale. The full price you pay goes to the artist.
+        Melbourne has a thriving and inclusive technology community and it is on full display with many of the local Meetups. I have attended Meetups regularly for the last five years, with the Melbourne SEO Meetup being my monthly ritual to catch up with friends within the SEO space. Other Meetups I try to attend every once in a while are the Melbourne Shopify Meetup, Drupal Meetup and eCommerce Meetup. Come by some time and say hi =)
   heading: What we offer
   description: >
     Kaldi is the ultimate spot for coffee lovers who want to learn about their
@@ -65,5 +50,3 @@ main:
     alt: Coffee beans
     image: /img/products-grid1.jpg
 ---
-
-Hey this is tect. Where is it?

@@ -4,7 +4,7 @@ title: 'Is there a difference between link relationships and sameAs microdata?'
 image: /img/blog/difference-between-link-relationships-and-sameas-microdata.png
 date: 2015-02-09T15:04:10.000Z
 emoji: 😕
-description: What is the difference between rel="me" or itemprop="sameAs" for establishing authorship of web content? I answer Jason's question on the webmasters stack exchange and the importance of scope.
+description: What is the difference between rel='me' or itemprop='sameAs' for establishing authorship of web content? I answer Jason's question on the webmasters stack exchange and the importance of scope.
 tags:
   - Structured Data
   - schema.org

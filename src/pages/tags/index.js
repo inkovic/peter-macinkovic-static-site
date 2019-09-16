@@ -21,11 +21,12 @@ const TagsPage = ({
             className="column is-10 is-offset-1"
             style={{ marginBottom: '6rem' }}
           >
-            <h1 className="title is-size-2 is-bold-light">Categories</h1>
+            <h1 className="title is-size-2 is-bold-light">Blog Categories</h1>
             <ul className="taglist">
               {group.map(tag => (
                 <li key={tag.fieldValue}>
                   <Link 
+                  rel={(tag.totalCount < 2 ? `nofollow` : null)}
                   to={`/tags/${kebabCase(tag.fieldValue)}/`}
                   >
                     {tag.fieldValue} ({tag.totalCount})
@@ -33,6 +34,8 @@ const TagsPage = ({
                 </li>
               ))}
             </ul>
+          </div>
+          <div>
           </div>
         </div>
       </div>

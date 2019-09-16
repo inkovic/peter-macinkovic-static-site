@@ -1,4 +1,5 @@
 @import "~bulma/sass/utilities/initial-variables";
+@import "~bulma";
 
 // Config vars
 // Kaldi logo brand color: #FD461E
@@ -16,7 +17,7 @@ $secondary-invert: #A4B3B6;
 $body-color: #222;
 $black: #2b2523;
 
-@import "~bulma";
+
 .content .taglist {
   list-style: none;
   margin: 1.5rem 1.5rem 0 0;
@@ -28,6 +29,7 @@ $black: #2b2523;
   justify-content: left;
   -webkit-align-items: center;
   align-items: center;
+
   li {
     padding: 0 2rem 1rem 0;
     margin-bottom: 1.5rem;
@@ -42,7 +44,8 @@ $black: #2b2523;
   margin: 2em -50vw;
 }
 
-.full-width-image, .full-width-image-container {
+.full-width-image,
+.full-width-image-container {
   width: 100vw;
   height: 400px;
   background-size: cover;
@@ -88,63 +91,79 @@ $black: #2b2523;
 nav.navbar {
   position: fixed;
   width: 100%;
-  background: $primary;
-  .navbar-item{
+  background-color: $primary;
+  background-image: url("../img/zig-zag.png");
+  border-bottom: 1px double $secondary $primary;
+  box-shadow: inset 0 -1px 1px $primary,
+    inset 0 -2px 1px $secondary;
+
+  .navbar-item {
     color: white;
-    &:hover{
+
+    &:hover {
       background: transparent;
     }
   }
 
-  body code{
-  background-color: $secondary;
-  color: white;
-  font-size: 0.875em;
-  font-weight: normal;
-  padding: 0.25em 0.5em 0.25em;
+  body code {
+    background-color: $secondary;
+    color: white;
+    font-size: 0.875em;
+    font-weight: normal;
+    padding: 0.25em 0.5em 0.25em;
   }
 
-  
+
   .navbar-burger {
     color: $tertiary;
   }
+
   .navbar-menu {
     background: transparent;
+
     @include until($desktop) {
       background: $secondary;
-      border-top: $tertiary solid 1px;    }
-  } 
+      border-top: $tertiary solid 1px;
+    }
+  }
+
   .navbar-brand {
     .navbar-item {
       padding: 0.5 1rem;
+
       img {
         border-radius: 50%;
         border: solid 2px #f9f9f9;
         background: white;
         max-height: 2.5rem;
       }
-    } 
+    }
   }
-  .navbar-start{
-    .navbar-item{
-      &:hover{
+
+  .navbar-start {
+    .navbar-item {
+      &:hover {
         background: $secondary;
       }
     }
   }
-  .navbar-end{
+
+  .navbar-end {
     background: transparent;
-    .navbar-item{
-      &:hover{
+
+    .navbar-item {
+      &:hover {
         background: $secondary;
       }
     }
   }
-  
+
 }
 
-.index-title-wrap{
-  h1, h2{
+.index-title-wrap {
+
+  h1,
+  h2 {
     background-color: $primary;
     color: white;
     line-height: 1;
@@ -152,41 +171,110 @@ nav.navbar {
   }
 
 }
-.blog-title-wrap{
-  background: $primary;
-  color: white;
-  line-height: 1.4;
-  padding: 0.25rem;
-  margin: 0;
-}
-.article {
-margin-top: 1rem;
-  aside{
 
-    .author-card--sidebar{
-      .author-card-image {
-        img{
-        border-radius: 50%;
-        border: solid 2px #f9f9f9;
-        background: white;
+.blog-title-wrap {
+  background-color: $primary;
+  background-image: url("../img/zig-zag.png");
+  color: white;
+  line-height: 1.81;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+
+  h1 {
+    line-height: 1.3;
+  }
+}
+
+.article-body {
+  padding: 1rem 1.5rem;
+  color: #222;
+  line-height: 1.81;
+  a {
+    color: $primary;
+    border-bottom: dashed 1px $secondary;
+    font-weight: bold;
+
+    &:hover {
+      color: $secondary;
+      border-bottom: dotted 1px $secondary;
+    }
+  }
+
+  code {
+    background: #fff3d4;
+    color: #222;
+    word-wrap: break-word;
+    border-color: #f6b73c;
+    border-style: solid;
+    border-width: 0;
+    border-left-width: 2px;
+  }
+}
+
+.article {
+  margin-top: 1rem;
+
+  aside {
+    .aside--wrap {
+      position: sticky;
+      top: 4rem;
+
+      .author-card--sidebar {
+        display: grid;
+        grid-template-columns: 4fr 8fr;
+        grid-column-gap: 1em;
+        top: 4rem;
+
+        .author-card-image {
+          img {
+            border-radius: 50%;
+            border: solid 2px #f9f9f9;
+            background: white;
+          }
+        }
+
+        .author-card-desc {
+          font-size: 1rem;
         }
       }
-      .author-card-desc {
-        font-size: 1rem;
+
+      .blog-categories {
+        ul {
+          li {
+            padding: 2px 5px;
+            background-color: $primary;
+            background-image: url("../img/zig-zag.png");
+            margin-right: 4px;
+            border-radius: 6px 0 0 6px;
+
+            &:hover {
+              background-color: $secondary;
+            }
+
+            a {
+              color: white;
+            }
+          }
+        }
       }
     }
+
   }
 }
 
 footer.footer {
   padding: 3rem 0 0;
   background-color: $primary;
+  background-image: url("../img/zig-zag.png");
   color: #e5e5e5;
 }
 
 .menu-list {
   list-style: none !important;
   text-align: left;
+
   a {
     color: #e5e5e5;
   }
@@ -194,6 +282,7 @@ footer.footer {
 
 .social {
   padding: 2em;
+
   a {
     padding: .5em .5em .3em;
     border-radius: 1em;
@@ -204,7 +293,7 @@ footer.footer {
   }
 }
 
-blockquote{
+blockquote {
   background: $secondary;
   padding: 1rem;
   color: white;
@@ -212,9 +301,50 @@ blockquote{
 }
 
 .blogroll-title {
-  text-decoration: none!important;
-  color: $primary!important;
+  text-decoration: none !important;
+  color: $primary !important;
   line-height: 1.15;
-  font-size: 22px!important;
+  font-size: 22px !important;
 }
 
+.social-list {
+  list-style: none !important;
+  columns: 2;
+
+  a {
+    color: #222;
+    font-weight: bold;
+
+    &hover {
+      color: $secondary;
+    }
+  }
+
+}
+
+.social-svg {
+  width: 1em;
+  height: 1em;
+
+  svg {
+    fill: $primary;
+  }
+}
+
+details {
+  summary{
+    display: inline;
+    outline: none;
+
+  }
+}
+
+.grid-4x8,
+.grid-4x8-image {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+}
+
+.grid-4x8-image+.gatsby-resp-image-wrapper:first-of-type {
+  display: none !important;
+}

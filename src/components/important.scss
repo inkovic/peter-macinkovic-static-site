@@ -1,0 +1,30 @@
+@import '~bulma/sass/utilities/mixins';
+
+.grid-4x8,
+.grid-4x8-image {
+    display: grid;
+    grid-template-columns: 1fr;
+    @include from($tablet){
+        grid-template-columns: 1fr 2fr;
+    }
+    div {
+        padding: 4px;
+    }
+}
+
+.grid-8x4,
+.grid-8x4-image {
+    display: grid;
+    grid-template-columns: 1fr;
+    @include from($tablet) {
+        grid-template-columns: 2fr 1fr;
+    }
+    div {
+        padding: 4px;
+    }
+}
+
+.grid-4x8-image+p>span:first-of-type.gatsby-resp-image-wrapper,
+.grid-8x4-image+p>span:first-of-type.gatsby-resp-image-wrapper {
+    display: none!important;
+}

@@ -8,12 +8,10 @@ import Helmet from 'react-helmet'
 
 export default class BlogIndexPage extends React.Component {
   render() {
-    const posts = this.props.data.allMarkdownRemark.edges
     return (
       <Layout>
-      <Helmet title={`Peter Macinkovic SEO & eCommerce Blog | ${this.props.data.allMarkdownRemark.totalCount} Blog Posts`} />
         <section className="section">
-          <div className="container">
+          <main className="container blog-posts">
             <div className="content">
               <div
                 className="full-width-image-container margin-top-0"
@@ -34,7 +32,7 @@ export default class BlogIndexPage extends React.Component {
             </div>
             <BlogRoll />
             <BlogRollSchema />
-          </div>
+          </main>
         </section>
       </Layout>
     )

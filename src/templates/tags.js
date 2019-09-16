@@ -9,6 +9,7 @@ import { kebabCase } from 'lodash'
 class TagRoute extends React.Component {
   render() {
     const posts = this.props.data.allMarkdownRemark.edges
+    const tag = this.props.pageContext.tag
     const blogPostSchema = JSON.stringify(posts.map(post => (
       {
       "@context": "https://schema.org",
@@ -50,10 +51,52 @@ class TagRoute extends React.Component {
     const blogSchema = JSON.stringify(
       {
         "@context": "https://schema.org",
-        "@type": "Blog", 
-        "author": "Peter macinkovic",
-        "blogPosts": `${trimBlogPostSchema}`,
-      }
+        "@type": "CollectionPage",
+        "mainContentOfPage": {
+          "@type": "WebPageElement",
+          "cssSelector": ".blog-posts"
+        },
+        "breadcrumb":
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+              "item": {
+                "@type": "ListItem",
+                  "@id":  `https://peter.macinkovic.id.au/`,
+                  "name": "👨 Peter Macinkovic"
+                }
+            },{
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@id": `https://peter.macinkovic.id.au/blog`,
+              "name": "📚Blog"
+            }
+          },{
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@id": `https://peter.macinkovic.id.au/tags/`,
+              "name": "🔖Tags"
+            }
+          },{
+            "@type": "ListItem",
+            "position": 4,
+              "item": {
+              "@id": `https://peter.macinkovic.id.au/tags/${kebabCase(tag)}/`,
+              "name": `📈 ${tag}`
+              }
+            }]
+          },
+          "mainEntity":
+            {
+              "@type": "Blog", 
+              "author": "Peter Macinkovic",
+              "blogPosts": `${trimBlogPostSchema}`,
+            },
+        }
     )
    const old1 = 'blogPosts":"'
    const repl1 = 'blogPosts":['
@@ -90,56 +133,28 @@ class TagRoute extends React.Component {
               </article>
             </div>
     ))
-    const tag = this.props.pageContext.tag
     const totalCount = this.props.data.allMarkdownRemark.totalCount
     const tagHeader = `${totalCount} post${
       totalCount === 1 ? '' : 's'
-    } tagged with “${tag}”`
-
+    } filed under “${tag}”`
+    const checkNoIndex = (totalCount < 2 ?
+        <meta name="robots" content="noindex" />
+      :
+        <meta name="robots" content="all"/>
+    )
     return (
       <Layout>
         <section className="section">
-          <Helmet title={`${totalCount} articles files under ${tag} | Peter Macinkovic Blog`} />
-          <script type="application/ld+json">{JSON.stringify(
-            {
-              "@context": "http://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [{
-                "@type": "ListItem",
-                "position": 1,
-                  "item": {
-                    "@type": "ListItem",
-                      "@id":  `https://peter.macinkovic.id.au/`,
-                      "name": "👨 Peter Macinkovic"
-                    }
-                },{
-                "@type": "ListItem",
-                "position": 2,
-                "item": {
-                  "@id": `https://peter.macinkovic.id.au/blog`,
-                  "name": "📚Blog"
-                }
-              },{
-                "@type": "ListItem",
-                "position": 3,
-                "item": {
-                  "@id": `https://peter.macinkovic.id.au/tags/`,
-                  "name": "🔖Tags"
-                }
-              },{
-                "@type": "ListItem",
-                "position": 4,
-                  "item": {
-                  "@id": `https://peter.macinkovic.id.au/tags/${kebabCase(tag)}/`,
-                  "name": `📈 ${tag}`
-                  }
-                }]
-              }
-          )}
+          <Helmet title={`${totalCount} articles filed under ${tag} | Peter Macinkovic Blog`} />
+          <Helmet>
+          <meta name={`A list of ${totalCount} articles filed under the category of ${tag} on the personal blog of Peter Macinkovic.`} />
+          {checkNoIndex}
+          <script type="application/ld+json">{replaceBlogSchema}
           </script>
-          <script type="application/ld+json">{replaceBlogSchema}</script>
-
-          <div className="container content">
+          </Helmet>
+          <Helmet>
+          </Helmet>
+          <main className="container content blog-posts">
             <div className="columns">
               <div
                 className="column is-10 is-offset-1"
@@ -152,7 +167,7 @@ class TagRoute extends React.Component {
                 </p>
               </div>
             </div>
-          </div>
+          </main>
         </section>
       </Layout>
     )

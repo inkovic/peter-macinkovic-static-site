@@ -4,7 +4,7 @@ title: 'Cash is King - Freelance Melbourne March Meetup'
 image: /img/melbourne-skyline-flinders.jpg
 date: 2015-04-07T15:04:10.000Z
 emoji: 🤑
-description: The Freelance Melbourne event is organised by Cameron Rambert (@cameronrambert) and this would be my first official attendance. This event "Cash is King A Guide to Freelance Cashflow" on March, Friday 13th.
+description: The Freelance Melbourne event is organised by Cameron Rambert (@cameronrambert) and this would be my first official attendance. This event 'Cash is King A Guide to Freelance Cashflow' on March, Friday 13th.
 tags:
   - Freelance
   - Meetup
